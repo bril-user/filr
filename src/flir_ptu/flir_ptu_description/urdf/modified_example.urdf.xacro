@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="ptu_d46"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base_link" />
+
+  <!-- Include and invoke the macro which creates a D46 -->
+  <xacro:include filename="d46.urdf.xacro" />
+  <xacro:ptu_d46 name="ptu" />
+
+  <!-- Create a fixed joint to connect the PTU to the rest of the robot -->
+  <joint name="base_to_ptu_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="ptu_base_link"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <!-- If you had a lidar or some other device mounted on the PTU, you would create another
+       fixed joint here between the ptu_mount link and the origin of the device. -->
+
+<!-- ZED 2i xacro definitions -->
+<xacro:include filename="zed_macro.urdf.xacro"/>
+<xacro:include filename="zed_descr.urdf.xacro"/>
+
+<!-- ZED 2i macro instantiation -->
+<xacro:zed_camera name="zed2i" model="zed2i" parent="ptu_mount_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</xacro:zed_camera>
+
+
+<!-- Fixed joint to connect ptu_mount_link to ZED 2i -->
+<joint name="ptu_mount_to_zed2i" type="fixed">
+    <parent link="ptu_mount_link"/>
+    <child link="zed2i_base_link"/>
+    <origin xyz="0 0 0"/>
+</joint>
+</robot>

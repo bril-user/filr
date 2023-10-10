@@ -1,0 +1,2 @@
+flir_ptu/flir_ptu_description:flir_ptu/flir_ptu_driver:flir_ptu/flir_ptu_viz:rp_cameras
+-DCATKIN_DEVEL_PREFIX=/home/jusaka/test_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jusaka/test_ws/install -G Unix Makefiles

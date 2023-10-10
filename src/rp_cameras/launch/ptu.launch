@@ -1,0 +1,18 @@
+<launch>
+  <!-- edited version of the ptu.launch file from the flir_ptu_driver package -->
+
+
+  <arg name="port" default="/dev/ttyUSB0" />
+  <arg name="limits_enabled" default="false" />
+
+  <param name="robot_description" textfile="$(find flir_ptu_description)/urdf/example.urdf" />
+  <!-- this will listen to <current_namespace>/joint_states -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- control topic will be "cmd", in the current namespace, ojints will be published to "joint_states", in the current namespace-->
+  <node name="ptu_driver" pkg="flir_ptu_driver" type="ptu_node" respawn="true">
+    <param name="port" value="$(arg port)" />
+    <param name="limits_enabled" value="$(arg limits_enabled)" />
+    <remap from="state" to="joint_states" />
+  </node>
+</launch>

@@ -1,0 +1,11 @@
+digraph G {
+"base_link" -> "ptu_base_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1692084311.190 sec old)\nBuffer length: 0.000 sec\n"];
+"ptu_base_link" -> "ptu_pan_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1692084311.190 sec old)\nBuffer length: 0.000 sec\n"];
+"ptu_tilted_link" -> "ptu_mount_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1692084311.190 sec old)\nBuffer length: 0.000 sec\n"];
+"ptu_tilt_link" -> "ptu_tilted_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 18.807 Hz\nMost recent transform: 1692084311.133 ( 0.057 sec old)\nBuffer length: 4.945 sec\n"];
+"ptu_pan_link" -> "ptu_tilt_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 18.807 Hz\nMost recent transform: 1692084311.133 ( 0.057 sec old)\nBuffer length: 4.945 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1692084311.190"[ shape=plaintext ] ;
+ }->"base_link";
+}
